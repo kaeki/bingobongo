@@ -7,15 +7,25 @@
 	</title>
 </head>
 <body>
-
-	<h1>BingoGeneraattori</h1>
-	<p>Montako numeroa haluat bingoarvontaa? (Oletus: 75)</p>
-	<input type="number" id="numbers" value="75"/><br>
+	<h1>BingoGeneraattori 2.0</h1>
+	<hr>
+	<p>Montako numeroa/kuvaa haluat bingoarvontaan? (Oletus: 75)</p>
+	<input type="number" id="numbers" value="75"/>
+	<br>
 	<p>Montako riviä haluat bingolappuun?</p>
-	<input type="number" id="rows" value="5"/><br>
+	<input type="number" id="rows" value="5"/>
+	<br>
 	<p>Montako lappua haluat?</p>
-	<input type="number" id="amount" value="10"/><br><br>
-	<button onclick="createBingo();">Lähetä</button><br><br>
+	<input type="number" id="amount" value="10"/>
+	<br>
+	<p>Haluatko bingon numeroilla vai kissakuvilla?</p>
+	<select id="selector">
+		<option value="number">Numeroilla</option>
+		<option value="cat">Kissakuvilla</option>
+	</select>
+	<br><br>
+	<button onclick="createBingo();">Generoi bingolaput</button>
+	<a href="index.html"><button>Nollaa</button></a><br><br>
 	<div id="tables">
 	</div>
 	<script src="bingo.js"></script>

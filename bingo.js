@@ -2,6 +2,9 @@ var numbers, rows, amount, grid, result;
 var tables = [];
 var table = [];
 var readyTables = [];
+var imgSrc = '';
+
+var e = document.getElementById('selector');
 
 //ns. Main
 function createBingo(){
@@ -10,6 +13,7 @@ function createBingo(){
 	rows = document.getElementById('rows').value;
 	grid = rows * rows;
 	amount = document.getElementById('amount').value;
+	selected = e.options[e.selectedIndex].value;
 	console.log("Numeroita: " +numbers + " Rivejä: " +rows +" Lkm: "+amount);
 	bingoTable();
 	createTables();
@@ -19,10 +23,16 @@ function createBingo(){
 //Luo annetuista luvuista taulukon
 function bingoTable(){
 	for (i=0; i<numbers; i++){
-		tables[i] = i+1;
+		if(selected == "cat"){
+			imgSrc = '<img src="http://loremflickr.com/240/240?random='+(i+1)+'" />';
+			tables[i] = imgSrc;
+		}
+		else{
+			tables[i] = i+1;
+		}
 	}
 };
-//Sekoittaa taulukon
+//Sekoittaa taulukon ja palauttaa aina yhden valmiin kortin
 function shuffleArray(array) { 
 	console.log("errday im shuffling");
     for (var i = array.length - 1; i > 0; i--) {
@@ -31,7 +41,7 @@ function shuffleArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
-    table = tables.slice(0, grid)
+    table = tables.slice(0, grid);
     return table;
 };
 function createTables(){
@@ -51,7 +61,7 @@ function makeTableHTML(myArray) {
        		}
         	
     }
-    result += "</table><br>";
+    result += "</table><br><br>";
 
     return result;
 };
