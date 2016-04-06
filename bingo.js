@@ -24,7 +24,7 @@ function createBingo(){
 function bingoTable(){
 	for (i=0; i<numbers; i++){
 		if(selected == "cat"){
-			imgSrc = '<img src="http://loremflickr.com/240/240?random='+(i+1)+'" />';
+			imgSrc = '<img src="http://loremflickr.com/200/200?random='+(i+1)+'" />';
 			tables[i] = imgSrc;
 		}
 		else{
@@ -41,7 +41,7 @@ function shuffleArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
-    table = tables.slice(0, grid);
+    table = array.slice(0, grid);
     return table;
 };
 function createTables(){
@@ -66,9 +66,19 @@ function makeTableHTML(myArray) {
     return result;
 };
 function showTables(){
+	document.getElementById('tables').innerHTML += "<h3>Valmiit Bingolaput:</h3>";
 	for(var i=0; i < readyTables.length; i++){
-	makeTableHTML(readyTables[i]);
-	document.getElementById('tables').innerHTML += result;
+		makeTableHTML(readyTables[i]);
+		document.getElementById('tables').innerHTML += result;
 	}
+};
+function raffle(){
+	grid = numbers;
+	var raffleTable = shuffleArray(tables);
+	document.getElementById('raffle').innerHTML += "<h3>Arvotut Bingonumerot/kuvat:</h3>";
+	for (var i = 0; i < raffleTable.length; i++){
+		console.log("lol");
+		document.getElementById('raffle').innerHTML += "<p>"+(i+1)+": " + raffleTable[i] + "</p><br>";
+	};
 };
 
